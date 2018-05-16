@@ -1,0 +1,50 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .example-card {
+    max-width: 300px;
+  }
+  
+  .example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+  }
+  mat-chip {
+    max-width: 70px;
+  }
+  #footer {
+    position: relative;
+    background-color: #000;
+    height: 100px;
+    margin-top: 0%;
+    clear: both;
+  
+  }
+  .header {
+    background-color: #0C0B0F;
+    color: crimson;
+  }
+  .logo {
+    color: blanchedalmond;
+    text-decoration: none;
+  }
+  
+  .example-icon {
+    padding: 0 24px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .sign-in-chip {
+      background-color: crimson;
+      color: blanchedalmond;
+  }
+  .sign-in {
+      text-decoration: none;
+      color: blanchedalmond;
+  }
