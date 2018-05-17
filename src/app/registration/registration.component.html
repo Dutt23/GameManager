@@ -1,262 +1,136 @@
-<!-- <mat-accordion>
+<div class="example-container">
+
+    <mat-form-field>
+        <input matInput placeholder="Game Id" required [(ngModel)]="gameId">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Game Image" required [(ngModel)]="gameImage">
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input matInput  placeholder="Created By" required [(ngModel)]="createdBy">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="date" placeholder="Created on " required [(ngModel)]="createdOn">
+    </mat-form-field>
+
+    <div id=" Game">
+        <mat-form-field>
+            <mat-select placeholder="Select Game Type" [(ngModel)]="gameType">
+                <mat-option value="Singleplayer" (click)="gameValue(null)">SinglePlayer Time Based</mat-option>
+                <mat-option value="Singleplayer" (click)="gameValue(null)">SinglePlayer Adaptive</mat-option>
+                <mat-option value="Singleplayer" (click)="gameValue(null)">SinglePlayer Time Fastest Finger First</mat-option>
+                <mat-option value="Multiplayer" (click)="gameValue(gameType)">Multiplayer Fastest Finger First</mat-option>
+
+            </mat-select>
+
+        </mat-form-field>
+        <mat-form-field *ngIf="gameMode" [(ngModel)]="numberOfPlayers">
+            <input matInput type="number" placeholder="Number of players" #numberofPlayers required>
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <textarea matInput placeholder="Game Description " matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" [(ngModel)]="gameDescription"
+            required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type= "number" placeholder="Game Level Id" required [(ngModel)]="gameLevelId">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type = "number" placeholder="Game Score Id" required [(ngModel)]="gameScoreId">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type = "number" placeholder="Game Time Id" required [(ngModel)]="gameTimeId">
+    </mat-form-field>
+    <!-- List for the table -->
+    <mat-list role="list">
+        <div>
+            <mat-list-item role="listitem">Easy Level Questions
 
-    <mat-expansion-panel>
-
-        <mat-expansion-panel-header>
-
-            <mat-panel-title>
-                
-                Game Topic card
-
-            </mat-panel-title>
-
-        </mat-expansion-panel-header>
-
-
-
-
-        <mat-radio-button class="example-radio-button" value="SinglePlayer" #gameMode1 (click)="openDialog()">
-            SinglePlayer
-        </mat-radio-button>
-
-        <mat-radio-button class="example-radio-button" value="Multiplayer" #gameMode2 (click)="openMultiDialog()">
-            Multiplayer
-        </mat-radio-button>
-
-
-
-
-
-
-
-    </mat-expansion-panel>
-</mat-accordion>
-
-
-
-
-
-
-
-
- -->
-
-<mat-accordion>
-
-    <mat-expansion-panel *ngFor="let game of games">
-
-
-        <mat-expansion-panel-header>
-
-            <mat-panel-title>
-
-                Category : {{game.category}}
-
-            </mat-panel-title>
-
-        </mat-expansion-panel-header>
-
-        <mat-accordion>
-
-            <mat-expansion-panel>
-
-                <mat-expansion-panel-header>
-
-                    <mat-panel-title>
-                        Game Name: {{game.gameName}}
-
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-
-
-
-                <!-- Starting of the adding form  -->
-                <div class="example-container">
-                    <!-- <mat-form-field>
-             <input matInput placeholder="Game Name" [(ngModel)]="game.gameName" required>
-         </mat-form-field> -->
-                    <!-- <select [(ngModel)]="game.gameType">
-                            <option
-                        </select> -->
-                    <mat-form-field>
-                        <input matInput placeholder="Game Name" [(ngModel)]="game.gameName" required>
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <input matInput placeholder="Game Image" [(ngModel)]="game.gameImage" required>
-                    </mat-form-field>
-                    <div id=" Game">
-                        <mat-form-field>
-                            <mat-select placeholder="Select Game " [(ngModel)]="game.gameType">
-                                <mat-option value="Singleplayer" #gameType (click)="gameValue(null)">SinglePlayer Time Based</mat-option>
-                                <mat-option value="Singleplayer" #gameType (click)="gameValue(null)">SinglePlayer Adaptive</mat-option>
-                                <mat-option value="Singleplayer" #gameType (click)="gameValue(null)">SinglePlayer Time Fastest Finger First</mat-option>
-                                <mat-option value="Multiplayer" #gameType (click)="gameValue(gameType.value)">Multiplayer Fastest Finger First</mat-option>
-
-                            </mat-select>
-
-                        </mat-form-field>
-                        <mat-form-field *ngIf="gameMode">
-                            <input matInput type="number" placeholder="Number of players" #numberofPlayers required>
-                        </mat-form-field>
-                    </div>
-                    <mat-form-field>
-                        <textarea matInput placeholder="Game Description " [(ngModel)]="game.gameDescription" matTextareaAutosize matAutosizeMinRows="2"
-                            matAutosizeMaxRows="5" #gameDescription required></textarea>
-                    </mat-form-field>
-
-                    <!-- For entering questions -->
-
-                    <mat-list role="list">
-                        <div>
-                            <mat-list-item role="listitem">Easy Level Questions
-
-
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Number of Questions " #totalNumberOfQuestions required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Total Score" #totalNumberOfQuestions required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Time" #totalNumberOfQuestions required>
-                                </mat-form-field>
-
-                            </mat-list-item>
-
-                        </div>
-                        <br>
-                        <br>
-                        <div>
-                            <mat-list-item role="listitem">Medium Level Questions
-
-
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Number of Questions " #totalNumberOfQuestions required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Total Score" #totalNumberOfQuestions required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Time" #totalNumberOfQuestions required>
-                                </mat-form-field>
-
-                            </mat-list-item>
-
-                        </div>
-
-                        <br>
-                        <br>
-                        <div>
-                            <mat-list-item role="listitem">Hard Level Questions
-
-
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Number of Questions " #totalNumberOfQuestions required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Total Score" #totalNumberOfQuestions required>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input matInput type="number" placeholder="Time" #totalNumberOfQuestions required>
-                                </mat-form-field>
-
-                            </mat-list-item>
-
-                        </div>
-                    </mat-list>
-                    <br>
-                    <br>
-                    <mat-form-field>
-                        <input matInput type="number" placeholder="Number of Questions " #totalNumberOfQuestions required>
-                    </mat-form-field>
-                    <!-- <mat-form-field>
-                        <mat-select placeholder="Difficulty Level">
-                            <mat-option value="easy" #questionDifficulty>Easy</mat-option>
-                            <mat-option value="medium" #questionDifficulty>Medium</mat-option>
-                            <mat-option value="hard" #questionDifficulty>Hard</mat-option>
-
-                        </mat-select>
-                    </mat-form-field> -->
-
-                    <mat-form-field>
-                        <input matInput type="number" placeholder="Total Score" #totalScore required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <textarea matInput placeholder="Rules" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" #gameRules required></textarea>
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <input matInput placeholder="Duration of the Game" #gameDuration required>
-                    </mat-form-field>
-                    <a routerLink="/login">
-                        <!-- <button mat-raised-button color="primary" style="align-content: center" (click)="add(gameType.value, gameDescription.value, totalNumOfQuestions.value, questionDifficulty.value, gameDuration.value, timePerQuestion.value, numberOfPlayers.value, setOfRules.value);gameId.value=''; categoryName.value=''; topicName.value=''; gameType.value=''; gameDescription.value=''; totalNumOfQuestions.value=''; levelOfQuestion.value=''; gameDuration.value=''; timePerQuestion.value=''; numberOfPlayers.value=''; setOfRules.value='';">Create</button> -->
-                        <button mat-raised-button color="primary" style="align-content: center" (click)="add(game)">Create Game</button>
-                    </a>
-
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-        <!-- <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Add topic
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
 
                 <mat-form-field>
-                    <input matInput placeholder="Topic Name" #categoryName>
+                    <input matInput type="number" placeholder="Number of Questions " [(ngModel)]="numberOfEasyQuestions">
                 </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Total Score" [(ngModel)]="totalScoreOfEasyQuestions">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Time" [(ngModel)]="totalTimeForEasyQuestions">
+                </mat-form-field>
+
+            </mat-list-item>
+
+        </div>
+        <br>
+        <br>
+        <div>
+            <mat-list-item role="listitem">Medium Level Questions
+
 
                 <mat-form-field>
-                    <input matInput type="number" placeholder="Topic Id" #categoryId>
+                    <input matInput type="number" placeholder="Number of Questions" [(ngModel)]="numberOfMediumQuestions">
                 </mat-form-field>
-                <button mat-raised-button color="primary">
-                    Add
-                </button>
-            </mat-expansion-panel>
-        </mat-accordion> -->
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Total Score" [(ngModel)]="totalScoreOfMediumQuestions">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Time" [(ngModel)]="totalTimeForMediumQuestions">
+                </mat-form-field>
 
-    </mat-expansion-panel>
+            </mat-list-item>
 
-</mat-accordion>
+        </div>
 
-<!-- <mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Add category
-            </mat-panel-title>
+        <br>
+        <br>
+        <div>
+            <mat-list-item role="listitem">Hard Level Questions
 
-        </mat-expansion-panel-header>
 
-        <mat-form-field>
-            <input matInput placeholder="Category Name" #categoryName>
-        </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Number of Questions " [(ngModel)]="numberOfHardQuestions">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Total Score " [(ngModel)]="totalScoreOfHardQuestions">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Time" [(ngModel)]="totalTimeForHardQuestions">
+                </mat-form-field>
 
-        <mat-form-field>
-            <input matInput type="number" placeholder="Category Id" #categoryId>
-        </mat-form-field>
-        <button mat-raised-button color="primary">
-            Add
-        </button>
-    </mat-expansion-panel>
-</mat-accordion> -->
+            </mat-list-item>
 
+        </div>
+    </mat-list>
+
+
+    <mat-form-field>
+        <input matInput type="number" [(ngModel)]="numberOfEasyQuestions + numberOfMediumQuestions + numberOfHardQuestions" placeholder="Total Number of Questions "
+            readonly>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input matInput type="number" [(ngModel)]="totalScoreOfEasyQuestions + totalScoreOfMediumQuestions + totalScoreOfHardQuestions"
+            placeholder="Total Score " readonly>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number" [(ngModel)]="totalTimeForEasyQuestions + totalTimeForMediumQuestions + totalTimeForHardQuestions"
+            placeholder="Duration of Game" readonly>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Rules" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" #gameRules required></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input matInput type="number" placeholder="Game Popularity" [(ngModel)]="gamePopularity" required>
+    </mat-form-field>
+    <a routerLink="/login">
+        <!-- <button mat-raised-button color="primary" style="align-content: center" (click)="add(gameId.value,gameImage,createdBy.value,gameType.value, gameDescription.value, totalNumOfQuestions.value, questionDifficulty.value, gameDuration.value, timePerQuestion.value, numberOfPlayers.value, setOfRules.value);gameId.value=''; categoryName.value=''; topicName.value=''; gameType.value=''; gameDescription.value=''; totalNumOfQuestions.value=''; levelOfQuestion.value=''; gameDuration.value=''; timePerQuestion.value=''; numberOfPlayers.value=''; setOfRules.value='';">Create</button> -->
+        <button mat-raised-button color="primary" style="align-content: center" (click)="add()">Create Game</button>
+    </a>
+
+</div>
 <app-footer></app-footer>
-
-
-
-
-
-    <!-- <mat-form-field>
-            <input matInput placeholder="Game Name" [(ngModel)]="game.gameName" required>
-        </mat-form-field> -->
-    <!-- <select [(ngModel)]="game.gameType">
-                           <option
-                       </select> -->
-
-    

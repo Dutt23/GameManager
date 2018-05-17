@@ -1,14 +1,12 @@
 export class Game{
     gameId: number;
+    gameImage: string;
     createdBy: string;
     createdOn: number;
-    gameName: string;
-    gameImage: string;
-    categoryName: string;
     gameType: string;
     gameDescription:string;
     gameRules:string;
-    gamePopularity:string;
+    gamePopularity:number;
     questionLevels:{
         gqLevelId:number;
         easyLevel:number;
@@ -27,14 +25,24 @@ export class Game{
         mediumQuestionsScore:number;
         advanceQuestionsScore:number;
     }
-    questions:{
-        questionId:number;
-        questionLevel:string;
-        questionStem:string;
-        option1:string;
-        option2:string;
-        option3:string;
-        option4:string;
-        correctAnswer:string;
+    topic:{
+        topicId:number,
+        topicName:string,
+        topicImage:string,
+        questions:{
+            questionId:number;
+            questionLevel:string;
+            questionStem:string;
+            option1:string;
+            option2:string;
+            option3:string;
+            option4:string;
+            correctAnswer:string;
+            user: {
+                userId:number,
+                userName:string
+            }
+        }
     }
+    
 }

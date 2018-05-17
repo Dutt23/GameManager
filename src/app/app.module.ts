@@ -27,6 +27,7 @@ import { GameService } from "./game.service";
 import {MatTableModule} from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import { AdminCreateGameComponent } from './admin-create-game/admin-create-game.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -51,7 +52,8 @@ import { AdminCreateGameComponent } from './admin-create-game/admin-create-game.
     SideNavMenuModule,
     MatSidenavModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule
   ],
   entryComponents: [RegDialogComponent,MultiplayerPopupComponent],
   providers: [GameService],

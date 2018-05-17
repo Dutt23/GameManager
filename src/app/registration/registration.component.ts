@@ -19,6 +19,31 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     private gameService: GameService
   ) {}
+  // All fields in the htmml file
+  numberOfEasyQuestions:number;
+  numberOfMediumQuestions:number;
+  numberOfHardQuestions:number;
+  gameLevelId:number;
+
+  totalScoreOfEasyQuestions:number;
+  totalScoreOfMediumQuestions:number;
+  totalScoreOfHardQuestions:number;
+  gameScoreId:number;
+
+  totalTimeForEasyQuestions:number;
+  totalTimeForMediumQuestions:number;
+  totalTimeForHardQuestions:number;
+  gameTimeId:number;
+
+  gameId: number;
+  gameImage: String;
+  createdBy: String;
+  createdOn: String;
+  gameType: String;
+  gameDescription: String;
+  gameRules: String;
+  gamePopularity: number;
+
 games: Game[];
   openDialog(): void {
     let dialogRef = this.dialog.open(RegDialogComponent, {
@@ -38,10 +63,11 @@ games: Game[];
       console.log("The dialog was closed");
     });
   }
-
+// To show all games and questions. Not initialised yet
   showGames() {
     this.gameService.showGames().subscribe(games => (this.games = games));
   }
+  // This is for showing only if multiplayer
   gameMode: string;
   gameValue(hi : string)
   {
@@ -64,16 +90,60 @@ this.gameMode = hi;
   //     });
   // }
   game;
-  add(game:Game)
+  add()
   {
-    this.gameService.createGame(game).subscribe(game=>{
-      this.game=game;
-      console.log(game);
+    // Adding all objects and fields to one object
+    let games = {
+      gameId : this.gameId,
+      gameImage : this.gameImage,
+      createdBy : this.createdBy,
+      createdOn : this.createdOn,
+      gameType : this.gameType,
+      gameDescription: this.gameDescription,
+      gameRules: this.gameRules,
+      gamePopularity: this.gamePopularity,
+
+      gameQuestionLevel: [
+        {
+          numberOfEasyQuestions: `${this.numberOfEasyQuestions}`,
+          numberOfMediumQuestions: `${this.numberOfMediumQuestions}`,
+          numberOfHardQuestions: this.numberOfHardQuestions,
+          gameLevelId: this.gameLevelId,
+          
+        }
+      ],
+      gameQuestionScore: [
+        {
+          totalScoreOfEasyQuestions: `${this.totalScoreOfEasyQuestions}`,
+          totalScoreOfMediumQuestions: `${this.totalScoreOfMediumQuestions}`,
+          totalScoreOfHardQuestions: this.totalScoreOfHardQuestions,
+          gameScoreId: this.gameScoreId,
+          
+        }
+      ],
+      gameQuestionTime:[
+        {
+          totalTimeForEasyQuestions: `${this.totalTimeForEasyQuestions}`,
+          totalTimeForMediumQuestions: `${this.totalTimeForMediumQuestions}`,
+          totalTimeForHardQuestions: this.totalTimeForHardQuestions,
+          gameTimeId: this.gameTimeId,
+
+        }
+      ]
+
+    
+    };
+    this.gameService
+    .createGame(games)
+    .subscribe(game => {
+      this.game = game;
     });
   }
+  
 
   ngOnInit() {
-    this.showGames();
+    // Not yet required
+    // this.showGames();
   }
 
   // Dummy data
@@ -87,3 +157,4 @@ this.gameMode = hi;
 
   // topics = ["Topic 1", "Topic 2", "Topic 3", "Topic 4"];
 }
+

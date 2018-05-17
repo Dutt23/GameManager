@@ -18,14 +18,14 @@ export class GameService {
  
   public showGames(): Observable<Game[]>{
     
-    return this.http.get<Game[]>("http://localhost:8080/api/game/gameManager");
+    return this.http.get<Game[]>("http://172.23.238.185:8080/api/game/gameManager");
 
   }
 
   public createGame(game): Observable<Game>{
     console.log("gg",game);
     return this.http.post<Game>(
-      "http://localhost:8080/api/game/gameManager",game);
+      "http://172.23.238.185:8080/api/game/category/1/physics",game);
     
   }
 
